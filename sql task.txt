@@ -1,0 +1,195 @@
+1st window:
+
+
+
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   25 | kadiri     |
+| manohar   |    5 |   25 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
+| kumar     |    7 |   25 | anatapur   |
+| kalyan    |    7 |   25 | anatapur   |
+| narendra  |    8 |   25 | kuppam     |
++-----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> update student set age = 20 where age = 25;
+Query OK, 6 rows affected (0.00 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> delete from student where id = 1;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values("hello",9,33,"gunthakal");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student;
++----------+------+------+------------+
+| name     | id   | age  | city       |
++----------+------+------+------------+
+| nandi    |    2 |   40 | anatapur   |
+| anji     |    3 |   26 | kurnool    |
+| raj      |    4 |   20 | kadiri     |
+| manohar  |    5 |   20 | karimnagar |
+| nandish  |    6 |   20 | hindupur   |
+| kumar    |    7 |   20 | anatapur   |
+| kalyan   |    7 |   20 | anatapur   |
+| narendra |    8 |   20 | kuppam     |
+| hello    |    9 |   33 | gunthakal  |
++----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update student set age = 40 where age=20;
+Query OK, 6 rows affected (0.00 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delete from student where name="nandi";
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint b;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student;
++----------+------+------+------------+
+| name     | id   | age  | city       |
++----------+------+------+------------+
+| nandi    |    2 |   40 | anatapur   |
+| anji     |    3 |   26 | kurnool    |
+| raj      |    4 |   40 | kadiri     |
+| manohar  |    5 |   40 | karimnagar |
+| nandish  |    6 |   40 | hindupur   |
+| kumar    |    7 |   40 | anatapur   |
+| kalyan   |    7 |   40 | anatapur   |
+| narendra |    8 |   40 | kuppam     |
+| hello    |    9 |   33 | gunthakal  |
++----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql>
+
+
+
+2nd window :
+
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   25 | kadiri     |
+| manohar   |    5 |   25 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
+| kumar     |    7 |   25 | anatapur   |
+| kalyan    |    7 |   25 | anatapur   |
+| narendra  |    8 |   25 | kuppam     |
++-----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   25 | kadiri     |
+| manohar   |    5 |   25 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
+| kumar     |    7 |   25 | anatapur   |
+| kalyan    |    7 |   25 | anatapur   |
+| narendra  |    8 |   25 | kuppam     |
++-----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   25 | kadiri     |
+| manohar   |    5 |   25 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
+| kumar     |    7 |   25 | anatapur   |
+| kalyan    |    7 |   25 | anatapur   |
+| narendra  |    8 |   25 | kuppam     |
++-----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student;
++----------+------+------+------------+
+| name     | id   | age  | city       |
++----------+------+------+------------+
+| nandi    |    2 |   40 | anatapur   |
+| anji     |    3 |   26 | kurnool    |
+| raj      |    4 |   20 | kadiri     |
+| manohar  |    5 |   20 | karimnagar |
+| nandish  |    6 |   20 | hindupur   |
+| kumar    |    7 |   20 | anatapur   |
+| kalyan   |    7 |   20 | anatapur   |
+| narendra |    8 |   20 | kuppam     |
+| hello    |    9 |   33 | gunthakal  |
++----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student;
++----------+------+------+------------+
+| name     | id   | age  | city       |
++----------+------+------+------------+
+| nandi    |    2 |   40 | anatapur   |
+| anji     |    3 |   26 | kurnool    |
+| raj      |    4 |   20 | kadiri     |
+| manohar  |    5 |   20 | karimnagar |
+| nandish  |    6 |   20 | hindupur   |
+| kumar    |    7 |   20 | anatapur   |
+| kalyan   |    7 |   20 | anatapur   |
+| narendra |    8 |   20 | kuppam     |
+| hello    |    9 |   33 | gunthakal  |
++----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student;
++----------+------+------+------------+
+| name     | id   | age  | city       |
++----------+------+------+------------+
+| nandi    |    2 |   40 | anatapur   |
+| anji     |    3 |   26 | kurnool    |
+| raj      |    4 |   40 | kadiri     |
+| manohar  |    5 |   40 | karimnagar |
+| nandish  |    6 |   40 | hindupur   |
+| kumar    |    7 |   40 | anatapur   |
+| kalyan   |    7 |   40 | anatapur   |
+| narendra |    8 |   40 | kuppam     |
+| hello    |    9 |   33 | gunthakal  |
++----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql>
